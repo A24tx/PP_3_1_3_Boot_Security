@@ -35,7 +35,10 @@
                         <input type="text" th:field="*{username}" class="form-control w-50 mx-auto">
                             <h6 class="fw-bold  pt-2">Roles</h6>
                         <select class="form-control w-50 mx-auto" th:field="*{roles}" multiple>
-                            <option th:each="r : ${allroles}" th:value="${r.id}" th:text="${r.role_name}">
+                            <option th:each="r : ${allroles}"
+                                    th:value="${r.id}"
+                                    th:selected="${viewuser.roles.contains(r)}"
+                                    th:text="${r.role_name}">
                                 select option
                             </option>
                         </select>

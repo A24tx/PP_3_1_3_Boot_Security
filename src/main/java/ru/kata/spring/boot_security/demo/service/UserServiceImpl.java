@@ -43,6 +43,7 @@ public class UserServiceImpl implements UserService {
             userFromDB.setUsername(u.getUsername());
             userFromDB.setName(u.getName());
             userFromDB.setPassword(bcrypt.encode(u.getPassword()));
+            userFromDB.setRoles(u.getRoles());
         }
     }
 
