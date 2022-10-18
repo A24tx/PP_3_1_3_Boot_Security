@@ -37,13 +37,11 @@ public class AdminController {
     }
 
     @GetMapping("/admin/user")
-    public String showAdminPageForUser(@PathVariable(value = "userId") long id, Model model) {
+    public String showAdminPageForUser(Model model) {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("users", myUserService.getUsers());
         model.addAttribute("currentuser", currentUser);
-        User u = myUserService.getUserById(id);
 
-        return "admin";
+        return "adminUserView";
     }
 
 
@@ -83,16 +81,6 @@ public class AdminController {
         return "adminDeleteWindow";
     }
 
-    @GetMapping("/admin/viewUser/{id}")
-    public String showAdminUserView(@PathVariable(value = "id") long id, Model model) {
-        User viewUser = myUserService.getUserById(id);
-        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        model.addAttribute("users", myUserService.getUsers());
-        model.addAttribute("currentuser", currentUser);
-        model.addAttribute("viewuser", viewUser);
-        model.addAttribute("userroles", Arrays.asList(viewUser.getRoles().toArray()));
-        return "adminUserView";
-    }
 
 
 }

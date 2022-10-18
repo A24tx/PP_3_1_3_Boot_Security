@@ -40,11 +40,11 @@
         <!-- side table -->
         <div class=" bg-body col-2 p-0 nav flex-column nav-pills">
             <div class="nav-item">
-                <a class="nav-link active" th:text="${currentuser.name}">$Admin_username</a>
+                <a class="nav-link active" href="/admin">Admin</a>
             </div>
-            <div th:each="user: ${users}" class="nav nav-tabs flex-column border-0">
+            <div class="nav nav-tabs flex-column border-0">
                     <span class="nav-item ">
-                        <a class="nav-link" th:class="*{currentuser.id == user.id}? 'd-none' : 'nav-link'"  th:href="@{/admin/viewUser/{id}(id=${user.id})}" th:text="${user.username}">$User username</a>
+                        <a class="nav-link" href="/admin/user">User</a>
                     </span>
             </div>
         </div>
@@ -76,18 +76,18 @@
             <div class="tab-content border"  id="myTabContent">
 
                 <div id="newUserTab" role="tabpanel" aria-labelledby="newuser-tab"  class="tab-pane fade">
-                    <p class ="bg-light fs-4 p-2 mb-0 border-bottom"> All users</p>
+                    <p class ="bg-light fs-4 p-2 mb-0 border-bottom">New user</p>
                     <div class="bg-body row pt-2 text-center">
 
-                    <form class="" th:action="@{/admin/saveUser}" th:object="${newuser}" method="POST">
+                    <form th:action="@{/admin/saveUser}" th:object="${newuser}" method="POST">
                         <h6 class=" pt-2 fw-bold">Email</h6>
-                        <input class="form-control m-1 w-50 mx-auto" type="text" th:field="*{username}" placeholder="Enter email"/>
+                        <input style="max-width: 30%;" class="form-control m-1 mx-auto" type="text" th:field="*{username}" placeholder="Enter email"/>
                         <h6 class=" pt-1 fw-bold">User name</h6>
-                        <input class="form-control m-1 w-50 mx-auto" type="text" th:field="*{name}" placeholder="Enter username"/>
+                        <input style="max-width: 30%;" class="form-control m-1 mx-auto" type="text" th:field="*{name}" placeholder="Enter username"/>
                         <h6 class=" pt-1 fw-bold">Password</h6>
-                        <input class="form-control m-1 w-50 mx-auto" type="text" th:field="*{password}" placeholder="Enter password"/>
+                        <input style="max-width: 30%;" class="form-control m-1  mx-auto" type="text" th:field="*{password}" placeholder="Enter password"/>
                         <h6 class=" pt-1 fw-bold">Roles</h6>
-                        <select class="form-control w-50 mx-auto" th:field="*{roles}" multiple>
+                        <select style="max-width: 30%;" class="form-control mx-auto" th:field="*{roles}" multiple>
                             <option th:each="r : ${allroles}" th:value="${r.id}" th:text="${r.role_name}">
                                 select option
                             </option>

@@ -82,13 +82,13 @@
 
 
         <!-- side table -->
-        <div class=" bg-body col-2 nav flex-column nav-pills">
+        <div class=" bg-body col-2 p-0 nav flex-column nav-pills">
             <div class="nav-item">
-                <a class="nav-link active" th:text="${currentuser.name}">$Admin_username</a>
+                <a class="nav-link active" href="/admin">Admin</a>
             </div>
-            <div th:each="user: ${users}" class="nav nav-tabs flex-column">
+            <div class="nav nav-tabs flex-column border-0">
                     <span class="nav-item ">
-                        <a class="nav-link" th:class="*{currentuser.id == user.id}? 'd-none' : 'nav-link'"  th:href="@{/admin/viewUser/{id}(id=${user.id})}" th:text="${user.username}">$User username</a>
+                        <a class="nav-link" href="/admin/user">User</a>
                     </span>
             </div>
         </div>
